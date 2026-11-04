@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import API from '../../api/axios';
 import { HiOutlineCheck, HiOutlineX, HiOutlineEye, HiOutlineTrash } from 'react-icons/hi';
 import { toast } from 'react-toastify';
@@ -149,6 +150,13 @@ const WebsiteManagement = () => {
         >
           Gallery Images
         </button>
+        <Link 
+          to="/admin/magazines"
+          className="btn btn-secondary"
+          style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}
+        >
+          Magazines & Publications &rarr;
+        </Link>
       </div>
 
       <div className="card" style={{ padding: 0 }}>

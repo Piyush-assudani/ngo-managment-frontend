@@ -34,7 +34,7 @@ const VolunteerSidebar = ({ isOpen, onClose }) => {
       <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
           <div className="sidebar-logo">
-            <img src="/logo.png" alt="EnVision" className="logo-img" />
+            <img src="/logo.webp" alt="EnVision" className="logo-img" />
             <div className="logo-text">
               <h2>EnVision</h2>
               <span>Volunteer Portal</span>

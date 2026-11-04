@@ -16,7 +16,7 @@ const Points = () => {
   const [filterStartDate, setFilterStartDate] = useState('');
   const [filterEndDate, setFilterEndDate] = useState('');
   const [formData, setFormData] = useState({
-    volunteer: '', category: '', points: '', date: new Date().toISOString().split('T')[0], remarks: ''
+    volunteer: '', category: '', points: '', date: new Date().toISOString().split('T')[0], remarks: '', action: 'add'
   });
   const [expandedRows, setExpandedRows] = useState({});
 
@@ -86,10 +86,11 @@ const Points = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await API.post('/points', { ...formData, points: Number(formData.points) });
-      toast.success('Points assigned successfully');
+      const finalPoints = formData.action === 'deduct' ? -Math.abs(Number(formData.points)) : Math.abs(Number(formData.points));
+      await API.post('/points', { ...formData, points: finalPoints });
+      toast.success(formData.action === 'deduct' ? 'Points deducted successfully' : 'Points assigned successfully');
       setShowForm(false);
-      setFormData({ volunteer: '', category: '', points: '', date: new Date().toISOString().split('T')[0], remarks: '' });
+      setFormData({ volunteer: '', category: '', points: '', date: new Date().toISOString().split('T')[0], remarks: '', action: 'add' });
       fetchFilteredPoints();
     } catch (error) {
       toast.error(error.response?.data?.message || 'Failed to assign points');
@@ -138,8 +139,20 @@ const Points = () => {
       {/* Assign Points Form */}
       {showForm && (
         <div className="inline-form-card">
-          <h3>Assign Points</h3>
+          <h3>{formData.action === 'deduct' ? 'Deduct Points' : 'Assign Points'}</h3>
           <form onSubmit={handleSubmit}>
+            <div className="form-row">
+              <div className="form-group" style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>
+                  <input type="radio" name="action" value="add" checked={formData.action === 'add'} onChange={(e) => setFormData({ ...formData, action: 'add' })} />
+                  Add Points
+                </label>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', color: '#ef4444' }}>
+                  <input type="radio" name="action" value="deduct" checked={formData.action === 'deduct'} onChange={(e) => setFormData({ ...formData, action: 'deduct' })} />
+                  Deduct Points
+                </label>
+              </div>
+            </div>
             <div className="form-row">
               <div className="form-group">
                 <label>Volunteer *</label>
@@ -181,7 +194,9 @@ const Points = () => {
             </div>
             <div className="form-actions">
               <button type="button" className="btn btn-secondary" onClick={() => setShowForm(false)}>Cancel</button>
-              <button type="submit" className="btn btn-primary">Assign Points</button>
+              <button type="submit" className={`btn ${formData.action === 'deduct' ? 'btn-danger' : 'btn-primary'}`} style={formData.action === 'deduct' ? { backgroundColor: '#ef4444', color: 'white', border: 'none' } : {}}>
+                {formData.action === 'deduct' ? 'Deduct Points' : 'Assign Points'}
+              </button>
             </div>
           </form>
         </div>
@@ -241,7 +256,9 @@ const Points = () => {
                       <span style={{ fontSize: '0.85rem', color: '#64748b' }}>(All Categories)</span>
                     </td>
                     <td>
-                      <span className="points-badge" style={{ fontSize: '1rem', padding: '0.4rem 1rem' }}>{group.totalPoints}</span>
+                      <span className="points-badge" style={{ fontSize: '1rem', padding: '0.4rem 1rem', backgroundColor: group.totalPoints < 0 ? '#fee2e2' : undefined, color: group.totalPoints < 0 ? '#ef4444' : undefined }}>
+                        {group.totalPoints}
+                      </span>
                     </td>
                     <td>-</td>
                     <td>
@@ -259,7 +276,11 @@ const Points = () => {
                     <tr key={p._id} style={{ backgroundColor: '#f1f5f9' }}>
                       <td style={{ paddingLeft: '3rem', color: '#64748b' }}>↳ Breakdown</td>
                       <td><span className="badge">{p.category?.name || '-'}</span></td>
-                      <td><span className="points-badge">{p.points}</span></td>
+                      <td>
+                        <span className="points-badge" style={{ backgroundColor: p.points < 0 ? '#fee2e2' : undefined, color: p.points < 0 ? '#ef4444' : undefined }}>
+                          {p.points}
+                        </span>
+                      </td>
                       <td>{new Date(p.date).toLocaleDateString('en-IN')}</td>
                       <td>{p.remarks || '-'}</td>
                       <td>

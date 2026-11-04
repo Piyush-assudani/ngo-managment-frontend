@@ -62,7 +62,7 @@ const Login = () => {
       <div className="login-container">
         <div className="login-card">
           <div className="login-header">
-            <img src="/logo.png" alt="EnVision Foundation" className="login-logo-img" />
+            <img src="/logo.webp" alt="EnVision Foundation" className="login-logo-img" />
             <h1>EnVision Foundation</h1>
             <p className="login-tagline">Learning Beyond Books</p>
             <p className="login-motive">Educating, empowering and bringing out the hidden creativity in under privileged children and helping them educate and bring out their skills</p>

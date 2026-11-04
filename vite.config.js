@@ -7,11 +7,11 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://localhost:6000',
+        target: 'https://envision.piyushassudani.in',
         changeOrigin: true
       },
       '/uploads': {
-        target: 'http://localhost:6000',
+        target: 'https://envision.piyushassudani.in',
         changeOrigin: true
       }
     }
