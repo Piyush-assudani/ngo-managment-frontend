@@ -14,6 +14,7 @@ import Points from './pages/admin/Points';
 import AdminTasks from './pages/admin/Tasks';
 import AdminAppeals from './pages/admin/Appeals';
 import AdminFunding from './pages/admin/Funding';
+import Expenses from './pages/admin/Expenses';
 import AdminReports from './pages/admin/Reports';
 import AdminSettings from './pages/admin/Settings';
 import AdminNotifications from './pages/admin/Notifications';
@@ -60,6 +61,7 @@ function App() {
             <Route path="tasks" element={<AdminTasks />} />
             <Route path="appeals" element={<AdminAppeals />} />
             <Route path="funding" element={<AdminFunding />} />
+            <Route path="expenses" element={<Expenses />} />
             <Route path="reports" element={<AdminReports />} />
             <Route path="settings" element={<AdminSettings />} />
             <Route path="notifications" element={<AdminNotifications />} />

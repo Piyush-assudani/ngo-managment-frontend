@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import API from '../../api/axios';
 import { toast } from 'react-toastify';
 import { HiOutlinePlus, HiOutlineDocumentDownload, HiOutlinePencil, HiOutlineTrash, HiOutlineX, HiOutlineSearch, HiOutlineCheck } from 'react-icons/hi';
@@ -142,7 +143,10 @@ const Funding = () => {
           <h2>Funding / Donations</h2>
           <p>Track donations and generate certificates</p>
         </div>
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+          <Link to="/admin/expenses" className="btn btn-secondary" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', textDecoration: 'none' }}>
+            Expense Tracker &rarr;
+          </Link>
           <ExportButtons data={filteredDonations} columns={exportColumns} filename="EnVision_Donations" />
           <button className="btn btn-primary" onClick={() => { resetForm(); setEditingDonation(null); setShowModal(true); }}>
             <HiOutlinePlus /> Add Donation

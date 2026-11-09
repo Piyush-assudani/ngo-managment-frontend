@@ -1,6 +1,6 @@
 import React from 'react';
 import './Certificate.css';
-import logo from '../assets/envision_logo.webp';
+import logo from '../assets/logo.png';
 
 const Certificate = ({ name, date }) => {
   return (
