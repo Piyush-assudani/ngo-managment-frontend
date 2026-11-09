@@ -12,7 +12,7 @@ const CertificatePreview = () => {
       </div>
       
       <div className="content-area" style={{ display: 'flex', justifyContent: 'center', background: '#e8ecf1', padding: '40px' }}>
-        <Certificate name="PIYUSH" date="30 September 2026" />
+        <Certificate name="SAMPLE DONOR" date="30 September 2026" />
       </div>
     </div>
   );

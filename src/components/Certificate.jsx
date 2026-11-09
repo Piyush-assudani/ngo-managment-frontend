@@ -28,7 +28,7 @@ const Certificate = ({ name, date }) => {
 
               <p className="certificate-presented">This certificate is proudly presented to</p>
               
-              <h3 className="certificate-name">{name || 'PIYUSH'}</h3>
+              <h3 className="certificate-name">{name || 'VALUED DONOR'}</h3>
               
               <div className="diamond-separator"></div>
 
