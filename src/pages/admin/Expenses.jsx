@@ -324,7 +324,7 @@ const Expenses = () => {
               fontWeight: 600,
             }}
           >
-            <HiOutlineTrendingUp style={{ fontSize: '1.2rem' }} /> + Record Income (आवक)
+            <HiOutlineTrendingUp style={{ fontSize: '1.2rem' }} /> + Record Income
           </button>
 
           <button
@@ -340,7 +340,7 @@ const Expenses = () => {
               fontWeight: 600,
             }}
           >
-            <HiOutlineTrendingDown style={{ fontSize: '1.2rem' }} /> + Record Expense (खर्च)
+            <HiOutlineTrendingDown style={{ fontSize: '1.2rem' }} /> + Record Expense
           </button>
 
           <button
@@ -391,7 +391,7 @@ const Expenses = () => {
           </div>
           <div>
             <span style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: 600, textTransform: 'uppercase' }}>
-              Total Income (कुल आवक)
+              Total Income
             </span>
             <h3 style={{ margin: '2px 0 0', fontSize: '1.65rem', color: '#10B981' }}>
               ₹{(stats?.totalIncome || 0).toLocaleString('en-IN')}
@@ -430,7 +430,7 @@ const Expenses = () => {
           </div>
           <div>
             <span style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: 600, textTransform: 'uppercase' }}>
-              Total Expenses (कुल खर्च)
+              Total Expenses
             </span>
             <h3 style={{ margin: '2px 0 0', fontSize: '1.65rem', color: '#EF4444' }}>
               ₹{(stats?.totalExpense || 0).toLocaleString('en-IN')}
@@ -469,7 +469,7 @@ const Expenses = () => {
           </div>
           <div>
             <span style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: 600, textTransform: 'uppercase' }}>
-              Net Balance (शुद्ध बचत)
+              Net Balance
             </span>
             <h3
               style={{
@@ -514,7 +514,7 @@ const Expenses = () => {
           </div>
           <div>
             <span style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', fontWeight: 600, textTransform: 'uppercase' }}>
-              This Month (इस माह)
+              This Month
             </span>
             <div style={{ display: 'flex', gap: '0.8rem', marginTop: '4px' }}>
               <div>
@@ -541,7 +541,7 @@ const Expenses = () => {
           className="btn btn-secondary btn-sm"
           style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}
         >
-          <HiOutlineFilter /> {showCategoryBreakdown ? 'Hide Category Insights' : 'Show Category Breakdown (खर्च व आय का विवरण)'}
+          <HiOutlineFilter /> {showCategoryBreakdown ? 'Hide Category Insights' : 'Show Category Breakdown'}
         </button>
 
         {showCategoryBreakdown && stats?.categoryBreakdown && (
@@ -645,7 +645,7 @@ const Expenses = () => {
                 boxShadow: typeFilter === 'income' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
               }}
             >
-              + Inflow (आवक)
+              + Inflow
             </button>
             <button
               onClick={() => setTypeFilter('expense')}
@@ -661,7 +661,7 @@ const Expenses = () => {
                 boxShadow: typeFilter === 'expense' ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
               }}
             >
-              - Outflow (खर्च)
+              - Outflow
             </button>
           </div>
 
@@ -965,7 +965,7 @@ const Expenses = () => {
                 >
                   {formData.type === 'income' ? <HiOutlineTrendingUp /> : <HiOutlineTrendingDown />}
                 </div>
-                <h3>{isEditing ? 'Edit Transaction' : formData.type === 'income' ? 'Record Income (आवक दर्ज करें)' : 'Record Expense (खर्च दर्ज करें)'}</h3>
+                <h3>{isEditing ? 'Edit Transaction' : formData.type === 'income' ? 'Record Income' : 'Record Expense'}</h3>
               </div>
               <button className="icon-btn" onClick={() => setModalOpen(false)}>
                 <HiOutlineX />
@@ -1001,7 +1001,7 @@ const Expenses = () => {
                       gap: '0.5rem',
                     }}
                   >
-                    <HiOutlineTrendingUp /> + Income (पैसा आया)
+                    <HiOutlineTrendingUp /> + Income
                   </button>
 
                   <button
@@ -1028,7 +1028,7 @@ const Expenses = () => {
                       gap: '0.5rem',
                     }}
                   >
-                    <HiOutlineTrendingDown /> - Expense (पैसा गया)
+                    <HiOutlineTrendingDown /> - Expense
                   </button>
                 </div>
               </div>
@@ -1140,9 +1140,9 @@ const Expenses = () => {
                     value={formData.status}
                     onChange={(e) => setFormData({ ...formData, status: e.target.value })}
                   >
-                    <option value="Completed">Completed (पूर्ण)</option>
-                    <option value="Pending">Pending (लंबित)</option>
-                    <option value="Cancelled">Cancelled (रद्द)</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Cancelled">Cancelled</option>
                   </select>
                 </div>
               </div>
